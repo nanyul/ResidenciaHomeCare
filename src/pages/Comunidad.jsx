@@ -27,9 +27,9 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
 export default function ComunidadPage() {
   return (
     <div className="w-full">
-      <div className="py-20 text-center border-b" style={{ backgroundColor: colors.grisClaro }}>
-        <Reveal><h1 className="text-4xl md:text-5xl font-extrabold" style={{ color: colors.textoOscuro }}>Comunidad y FAQ</h1></Reveal>
-        <Reveal delay={200}><p className="mt-4 text-lg max-w-2xl mx-auto" style={{ color: colors.textoGris }}>Muro de actividades recientes y respuestas claras a sus dudas frecuentes.</p></Reveal>
+      <div className="residence-banner border-b px-4 py-16 text-center">
+        <Reveal><h1 className="text-4xl md:text-5xl font-extrabold" style={{ color: colors.textoOscuro }}>Vida en la residencia</h1></Reveal>
+        <Reveal delay={200}><p className="mt-4 text-lg max-w-2xl mx-auto" style={{ color: colors.textoGris }}>Conozca las actividades y encuentre respuestas a las preguntas más comunes de las familias.</p></Reveal>
       </div>
 
       <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -34,13 +34,14 @@ export default function Footer({ currentPage, setCurrentPage }) {
           <div>
             <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: colors.verdeTeal }}>Contacto</h4>
             <ul className="space-y-2 text-gray-400">
-              <li className="flex items-center"><Phone className="w-4 h-4 mr-2 text-rosa" /> +506 2222 3344</li>
-              <li className="flex items-center"><Mail className="w-4 h-4 mr-2 text-rosa" /> info@santaclarahomecare.cr</li>
-              <li className="flex items-center"><MapPin className="w-4 h-4 mr-2 text-rosa" /> San José, Costa Rica</li>
+              <li className="flex items-center"><Phone className="w-4 h-4 mr-2 text-rosa" /> +506 2433-0000</li>
+              <li className="flex items-center"><Mail className="w-4 h-4 mr-2 text-rosa" /> <a href="mailto:santaclarahc@gmail.com">santaclarahc@gmail.com</a></li>
+              <li className="flex items-center"><MapPin className="w-4 h-4 mr-2 text-rosa" /> La Garita, Alajuela</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+          <button type="button" className="mb-3 block w-full text-gray-300 underline" onClick={() => setCurrentPage('privacidad')}>Aviso de privacidad</button>
           &copy; 2024 Residencia Geriátrica Santa Clara Home Care. Todos los derechos reservados.
         </div>
       </div>

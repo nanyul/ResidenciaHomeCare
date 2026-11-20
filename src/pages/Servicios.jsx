@@ -1,92 +1,59 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { Stethoscope, Activity, Users, Star, CheckCircle, Target, Eye, Heart, Search } from 'lucide-react';
+import { Activity, Apple, ClipboardList, HeartPulse, Search, Stethoscope, Users } from 'lucide-react';
 
-const colors = {
-  blanco: '#FFFFFF',
-  grisClaro: '#E4E5E6',
-  rosa: '#F69BAC',
-  verdeTeal: '#66B3B4',
-  textoOscuro: '#2D3748',
-  textoGris: '#4A5568'
-};
+const services = [
+  [Stethoscope, 'Medicina general', 'Valoraciones y seguimiento de la salud, con coordinación de consultas según cada caso.'],
+  [HeartPulse, 'Enfermería 24/7', 'Supervisión, apoyo en el cuidado diario y administración de medicamentos bajo indicación médica.'],
+  [Activity, 'Fisioterapia', 'Ejercicios adaptados para trabajar la movilidad, el equilibrio y la fuerza.'],
+  [Apple, 'Nutrición', 'Menús ajustados a las preferencias, necesidades nutricionales y texturas de cada residente.'],
+  [Users, 'Actividades sociorecreativas', 'Talleres, música y juegos para compartir y mantener intereses propios.'],
+  [ClipboardList, 'Planes personalizados', 'Una valoración inicial orienta el plan de cuidados y su seguimiento con la familia.'],
+];
 
-const Reveal = ({ children, delay = 0, className = "" }) => {
+const spaces = [
+  ['Habitaciones', 'Espacios para el descanso y las rutinas personales.', '1616594039964-ae9021a400a0'],
+  ['Áreas verdes', 'Un lugar para caminar, conversar y pasar tiempo al aire libre.', '1585320806297-9794b3e4eeae'],
+  ['Zonas comunes', 'Salas para compartir actividades y recibir a la familia.', '1600210492486-724fe5c67fb0'],
+  ['Comedor', 'Un punto de encuentro para disfrutar las comidas en compañía.', '1615874959474-d609969a20ed'],
+];
+
+const photo = (id, width) => 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + width + '&q=80';
+
+export default function Servicios({ openLightbox }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: delay / 1000, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+    <>
+      <header className="residence-banner px-4 py-16 text-center">
+        <p className="mb-2 font-bold text-teal-800">Especialidades y servicios</p>
+        <h1>Atención para cada etapa</h1>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-slate-700">Conozca el apoyo disponible para la salud, la vida diaria y la convivencia.</p>
+        <a href="#galeria" className="residence-outline mt-6 inline-block rounded-full px-5 py-3 font-bold">Ver instalaciones</a>
+      </header>
 
-export default function ServiciosPage({ openLightbox }) {
-  return (
-    <div className="w-full">
-      <div className="py-20 text-center border-b bg-opacity-10" style={{ backgroundColor: colors.rosa, borderColor: `${colors.rosa}30` }}>
-        <Reveal><h1 className="text-4xl md:text-5xl font-extrabold" style={{ color: colors.textoOscuro }}>Servicios e Instalaciones</h1></Reveal>
-        <Reveal delay={200}><p className="mt-4 text-lg max-w-2xl mx-auto" style={{ color: colors.textoGris }}>Atención minuciosa y espacios diseñados exclusivamente para el confort, seguridad y disfrute.</p></Reveal>
-      </div>
-
-      <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { icon: Stethoscope, title: "Enfermería 24/7", desc: "Vigilancia constante, control de signos vitales, administración de medicamentos y asistencia en la higiene diaria. Contamos con protocolos de emergencia rigurosos.", color: colors.verdeTeal },
-            { icon: Activity, title: "Terapia y Rehabilitación", desc: "Ejercicios guiados individualmente para mantener o mejorar la movilidad, equilibrio y fuerza muscular, reduciendo significativamente el riesgo de caídas.", color: colors.rosa },
-            { icon: Star, title: "Nutrición Especializada", desc: "Menús ricos y balanceados diseñados por nutricionistas, adaptados estrictamente a condiciones específicas (diabetes, hipertensión, intolerancias, texturas).", color: colors.rosa },
-            { icon: Users, title: "Actividades Socio-Recreativas", desc: "Terapias cognitivas, manualidades, musicoterapia, juegos de mesa grupales y celebración emotiva de fechas especiales para fomentar la socialización activa.", color: colors.verdeTeal }
-          ].map((srv, idx) => (
-            <Reveal key={idx} delay={idx * 100} className="flex p-8 border rounded-3xl shadow-sm bg-white hover:shadow-md transition" style={{ borderColor: colors.grisClaro }}>
-              <div className="flex-shrink-0 mr-6">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-opacity-10" style={{ backgroundColor: srv.color, color: srv.color }}>
-                  <srv.icon size={28} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: colors.textoOscuro }}>{srv.title}</h3>
-                <p className="leading-relaxed" style={{ color: colors.textoGris }}>{srv.desc}</p>
-              </div>
-            </Reveal>
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8" aria-label="Especialidades disponibles">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(([Icon, title, desc]) => (
+            <article className="residence-card rounded-2xl p-6" key={title}>
+              <div className="residence-icon mb-4 grid h-12 w-12 place-items-center rounded-xl"><Icon size={24} aria-hidden="true" /></div>
+              <h2 className="mb-2 text-xl font-extrabold text-slate-900">{title}</h2>
+              <p className="leading-relaxed text-slate-700">{desc}</p>
+            </article>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Galería */}
-      <div className="py-20 text-white" style={{ backgroundColor: colors.textoOscuro }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-16">
-            <h2 className="text-sm font-bold tracking-wider uppercase mb-2" style={{ color: colors.verdeTeal }}>Transparencia y Confort</h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold mb-4">Galería de Instalaciones</h3>
-            <p className="max-w-2xl mx-auto text-lg text-gray-300">Haga clic en las imágenes para ampliar y descubrir los detalles de los espacios diseñados exclusivamente para el bienestar de nuestros residentes.</p>
-          </Reveal>
-
-          <Reveal className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-5 h-auto md:h-[650px]">
-            <div onClick={() => openLightbox('https://images.unsplash.com/photo-1502672260266-1c1f52d36199?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', 'Habitaciones Adaptadas', 'Totalmente equipadas con camas ortopédicas articuladas, timbres de emergencia, y baños adaptados con agarraderas de seguridad.')} className="md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg">
-              <img src="https://images.unsplash.com/photo-1502672260266-1c1f52d36199?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Habitación" className="w-full h-72 md:h-full object-cover transform group-hover:scale-105 transition duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8">
-                <h4 className="text-2xl md:text-3xl font-bold mb-2">Habitaciones Privadas y Confortables</h4>
-              </div>
-              <div className="absolute top-6 right-6 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300"><Search /></div>
-            </div>
-            <div onClick={() => openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Zonas Verdes', 'Senderos planos y seguros rodeados de vegetación, perfectos para caminatas matutinas y actividades al aire libre.')} className="relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg">
-              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zonas Verdes" className="w-full h-72 md:h-full object-cover transform group-hover:scale-105 transition duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 className="text-xl font-bold mb-1">Zonas Verdes</h4>
-              </div>
-            </div>
-            <div onClick={() => openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Áreas Comunes', 'Espacios cálidos y bien iluminados, mobiliario ergonómico y áreas dispuestas para recibir a familiares con total comodidad.')} className="relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Áreas Comunes" className="w-full h-72 md:h-full object-cover transform group-hover:scale-105 transition duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                <h4 className="text-xl font-bold mb-1">Áreas Comunes</h4>
-              </div>
-            </div>
-          </Reveal>
+      <section id="galeria" className="scroll-mt-24 bg-teal-950 py-14 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-extrabold sm:text-4xl">Galería de instalaciones</h2>
+          <p className="mb-6 mt-3 text-teal-100">Seleccione una imagen para ampliarla. Fotografías de referencia.</p>
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {spaces.map(([title, desc, id]) => (
+              <button type="button" key={title} onClick={() => openLightbox(photo(id, 1200), title, desc)} className="group relative aspect-square overflow-hidden rounded-2xl bg-teal-800 text-left" aria-label={'Ampliar imagen de ' + title.toLowerCase()}>
+                <img src={photo(id, 750)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform group-hover:scale-105 motion-reduce:transition-none" />
+                <span className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black to-transparent px-3 pb-3 pt-10 font-bold sm:px-5"><span>{title}</span><Search size={18} className="shrink-0" aria-hidden="true" /></span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

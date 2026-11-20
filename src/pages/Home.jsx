@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import residenceIllustration from '../../images/home2.jpeg';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart, Home as HomeIcon, Menu, X, ArrowRight, Stethoscope, Activity, Users, Star,
@@ -33,21 +33,21 @@ export default function Home({ setPage }) {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="relative overflow-hidden" style={{ backgroundColor: colors.grisClaro }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 flex flex-col lg:flex-row items-center">
+      <div className="residence-hero relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 flex flex-col lg:flex-row items-center">
           <Reveal className="w-full lg:w-1/2 pr-0 lg:pr-12 text-center lg:text-left z-10">
-            <h2 className="text-sm font-bold tracking-wider uppercase mb-2" style={{ color: colors.rosa }}>Cuidado con calidez humana</h2>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4" style={{ color: colors.textoOscuro }}>
-              Residencia Geriatrica Santa Clara Home Care
+            <p className="mb-3 text-sm font-bold uppercase tracking-wider text-teal-800">Residencia en La Garita, Alajuela</p>
+            <h1 className="residence-title mb-4">
+              Cuidado cercano, <em>como en casa.</em>
             </h1>
             <p className="mt-4 text-lg sm:text-xl mb-8 leading-relaxed" style={{ color: colors.textoGris }}>
-              Brindamos atención personalizada y especializada las 24 horas del día, en La Garita de Alajuela, con un ambiente cálido, seguro y familiar, que promueve la salud, el bienestar y la calidad de vida de nuestros residentes.
+              En Santa Clara Home Care acompañamos a personas adultas mayores con atención personalizada y enfermería 24/7 en La Garita, Alajuela.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button onClick={() => setPage('contacto')} className="px-8 py-3 font-bold rounded-full text-white transition shadow-lg hover:-translate-y-1" style={{ backgroundColor: colors.rosa }}>
+              <button onClick={() => setPage('contacto')} className="px-8 py-3 font-bold rounded-full text-white transition shadow-lg hover:-translate-y-1" style={{ backgroundColor: "#245d53" }}>
                 Agendar una visita
               </button>
-              <button onClick={() => setPage('servicios')} className="px-8 py-3 font-bold rounded-full border-2 transition shadow-sm hover:-translate-y-1" style={{ borderColor: colors.verdeTeal, color: colors.verdeTeal, backgroundColor: 'transparent' }} onMouseOver={(e) => { e.currentTarget.style.backgroundColor = colors.verdeTeal; e.currentTarget.style.color = colors.blanco; }} onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = colors.verdeTeal; }}>
+              <button onClick={() => setPage('servicios')} className="residence-outline rounded-full px-8 py-3 font-bold transition">
                 Conocer servicios
               </button>
             </div>
@@ -63,7 +63,7 @@ export default function Home({ setPage }) {
       <div className="py-20 overflow-hidden" style={{ backgroundColor: colors.blanco }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
           <Reveal className="w-full lg:w-1/2 relative">
-            <img src="images/home2.jpeg" alt="Adultos mayores felices" className="rounded-3xl shadow-xl relative z-10" />
+            <img src={residenceIllustration} alt="Ilustración de acompañamiento a personas adultas mayores" className="rounded-3xl shadow-xl relative z-10" />
             <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full opacity-20 -z-0" style={{ backgroundColor: colors.rosa }}></div>
             <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full opacity-20 -z-0" style={{ backgroundColor: colors.verdeTeal }}></div>
           </Reveal>
@@ -91,7 +91,7 @@ export default function Home({ setPage }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {[
               { icon: HomeIcon, title: "Estancia y Cuidado", desc: "Habitaciones cómodas, limpias y adaptadas para garantizar seguridad y un descanso reparador.", color: colors.rosa },
-              { icon: Activity, title: "Atención Médica 24/7", desc: "Personal de enfermería y equipo médico para garantizar el bienestar físico, emocional y mental.", color: colors.verdeTeal },
+              { icon: Activity, title: "Enfermería 24/7", desc: "Personal de enfermería y equipo médico para garantizar el bienestar físico, emocional y mental.", color: colors.verdeTeal },
               { icon: Users, title: "Recreación y Terapia", desc: "Actividades recreativas, terapia ocupacional y estimulación cognitiva para mantener su bienestar y felicidad.", color: colors.rosa }
             ].map((srv, idx) => (
               <Reveal key={idx} delay={idx * 200} className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">

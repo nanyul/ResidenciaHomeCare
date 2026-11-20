@@ -5,6 +5,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.residence-banner, .residence-hero {
+  background: linear-gradient(120deg, #e5f3ed 0%, #f9f5ec 65%, #f8e9e9 100%);
+  border-color: #dce9e2;
+}
+
+.residence-banner h1, .residence-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.025em;
+  color: #203f38;
+}
+
+.residence-title em { color: #286658; }
+.residence-card { border: 1px solid #dce9e2; background: #fff; box-shadow: 0 4px 18px #253d3610; }
+.residence-icon { color: #286658; background: #e6f4ed; }
+.residence-card:nth-child(even) .residence-icon { color: #813f50; background: #faeaed; }
+.residence-outline { color: #21564c; border: 1px solid #8eaea4; background: #ffffff8c; }
+.residence-outline:hover { background: white; }
+
 @layer base {
   body {
     font-family: 'Inter', sans-serif;

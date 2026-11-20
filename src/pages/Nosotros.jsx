@@ -27,7 +27,7 @@ const Reveal = ({ children, delay = 0, className = "" }) => {
 export default function NosotrosPage() {
   return (
     <div className="w-full">
-      <div className="py-20 text-center border-b bg-opacity-10" style={{ backgroundColor: colors.verdeTeal, borderColor: `${colors.verdeTeal}30` }}>
+      <div className="residence-banner border-b px-4 py-16 text-center">
         <Reveal><h1 className="text-4xl md:text-5xl font-extrabold" style={{ color: colors.textoOscuro }}>Nuestra Identidad</h1></Reveal>
         <Reveal delay={200}><p className="mt-4 text-lg max-w-2xl mx-auto" style={{ color: colors.textoGris }}>Conozca nuestra misión, filosofía y al cálido equipo humano que hace de este lugar un verdadero hogar.</p></Reveal>
       </div>
